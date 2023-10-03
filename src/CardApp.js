@@ -54,7 +54,7 @@ function CardApp() {
    * reset the state of the cards to empty
    */
   async function handleShuffle() {
-    setDeck(d => ({ data: d.data, isLoading: true }))
+    setDeck(d => ({ data: d.data, isLoading: true }));
 
     const response = await fetch(`${BASE_URL}/${deck.data.deck_id}/shuffle`);
     const deckData = await response.json();
@@ -65,7 +65,7 @@ function CardApp() {
 
   if (deck.isLoading) return <h1>Loading Deck...</h1>;
 
-  
+
   const noCardsLeft = deck.data.remaining === 0;
 
   if (noCardsLeft) alert("OUT OF CARDS");
@@ -74,11 +74,15 @@ function CardApp() {
     <>
       {!noCardsLeft &&
         <button
-          className="btn btn-dark mb-4"
+          className="btn btn-dark mb-4 mx-3"
           onClick={drawCard} >
           Draw a Card!
         </button>}
-      <button className="btn btn-secondary mb-4" onClick={handleShuffle}>Shuffle the deck</button>
+      <button
+        className="btn btn-secondary mb-4"
+        onClick={handleShuffle}>
+        Shuffle the deck
+      </button>
       <div className="CardApp">
         {cards.map(c => (
           <Card key={c.code} card={c} />
