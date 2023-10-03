@@ -13,7 +13,7 @@ function Card({ card }) {
 
   return (
     <div className="m-2">
-      <img src={card.image} width="100px" alt="card" />
+      <img src={card.image} width="100px" alt={card.code} />
     </div>
   );
 }
